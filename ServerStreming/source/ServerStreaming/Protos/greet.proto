@@ -1,0 +1,25 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+
+option csharp_namespace = "ServerStreaming";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+    rpc GetNotifications(GetNotificationsRequest) returns (stream GetNotificationsResponse);
+}
+
+// The request message containing the user's name.
+message GetNotificationsRequest {
+  string name = 1;
+}
+
+ 
+
+message GetNotificationsResponse{
+  string name = 1;
+  string message = 2;
+  google.protobuf.Timestamp sent = 3;
+}
