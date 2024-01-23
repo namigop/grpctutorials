@@ -1,0 +1,25 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "ClientStreaming";
+
+package greet;
+
+
+service Greeter {
+   rpc SendNotifications(stream NotificationsRequest) returns (NotificationsResponse);   
+}
+
+
+// The request message containing the user's name.
+message NotificationsRequest {
+  string message = 1;
+  string to = 2;
+}
+
+ 
+
+message NotificationsResponse{  
+  string message = 1;
+  int32 total = 2;
+  google.protobuf.Timestamp receivedAt = 3;
+}
