@@ -1,0 +1,25 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "DuplexStreaming";
+
+package notify;
+
+
+service Notifier {
+   rpc ChatNotification(stream NotificationsRequest) returns (stream NotificationsResponse);   
+}
+
+
+// The request message containing the user's name.
+message NotificationsRequest {
+  string message = 1;
+  string to = 2;
+  string from = 3;
+}
+
+ 
+
+message NotificationsResponse{  
+  string message = 1;
+  google.protobuf.Timestamp receivedAt = 3;
+}
